@@ -68,7 +68,7 @@ public class ZombieNormal : MonoBehaviour
             {
                 damageTimer = 0;
                 //對植物造成傷害
-                PeaShooter peaShooter = collision.GetComponent<PeaShooter>();
+                Plant peaShooter = collision.GetComponent<Plant>();
                 float newHealth = peaShooter.ChangeHealth(-damage);
                 if (newHealth <= 0)
                 {
@@ -92,6 +92,7 @@ public class ZombieNormal : MonoBehaviour
         if (currentHealth <= lostHeadHealth && !lostHead)
         {
             lostHead = true;
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
             gameObject.transform.GetChild(0).GetComponent<Animator>().SetTrigger("LostHead");
             ani.SetBool("LostHead", true);
             head.SetActive(true);

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject bornParent;
     public GameObject zombiePrefab;
     public float createZombieTime;
+    private int zOrderIndex = 0;
     private void Start()
     {
         instance = this;
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        
+
     }
     public void ChangeSunNum(int changeNum)
     {
@@ -39,11 +40,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(createZombieTime);
         GameObject obj = Instantiate(zombiePrefab);
-        int index = Random.Range(0,5);
+        int index = Random.Range(0, 5);
         Transform pos = bornParent.transform.GetChild(index);
         //obj.transform.SetParent(pos,false);
         obj.transform.parent = pos.transform;
         obj.transform.position = pos.position;
+        obj.GetComponent<SpriteRenderer>().sortingOrder = zOrderIndex++;
         StartCoroutine(DalayCreateZombie());
     }
 }

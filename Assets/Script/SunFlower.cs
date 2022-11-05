@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SunFlower : MonoBehaviour
+public class SunFlower : Plant
 {
-    private Animator ani;
     public float readyTime;
     private float timer;
     public GameObject sunPrefab;
     private int sunNum;
-    private void Start()
+    protected override void Start()
     {
-        ani = GetComponent<Animator>();
+        base.Start();
         timer = 0;
+        sunNum = 0;
     }
     private void Update()
     {

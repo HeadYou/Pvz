@@ -65,6 +65,8 @@
     <Compile Include="Assets\Script\Sun.cs" />
     <Compile Include="Assets\Script\ZombieNormal.cs" />
     <Compile Include="Assets\Script\Card.cs" />
+    <Compile Include="Assets\Script\Plant.cs" />
+    <Compile Include="Assets\Script\WallNut.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

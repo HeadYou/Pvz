@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PeaShooter : MonoBehaviour
+public class PeaShooter : Plant
 {
     [Header("§ðÀ»¶¡¹j")]
     public float interval;
@@ -11,28 +11,21 @@ public class PeaShooter : MonoBehaviour
     public GameObject bullet;
     public Transform bulletPos;
 
-    public float health=6;
-    private float currentHealth;
-    private void Start()
+    protected override void Start()
     {
-        currentHealth = health;
+        base.Start();
+        timer = 0;
     }
+
     private void Update()
     {
+        if (!start) return;
+
         timer += Time.deltaTime;
         if (timer >= interval)
         {
             timer = 0;
             Instantiate(bullet, bulletPos.position, Quaternion.identity);
         }
-    }
-    public float ChangeHealth(float num)
-    {
-        currentHealth = Mathf.Clamp(currentHealth + num,0,health);
-        if (currentHealth<=0)
-        {
-            Destroy(gameObject);
-        }
-        return currentHealth;
     }
 }
